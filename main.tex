@@ -1,0 +1,315 @@
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+\usepackage{paracol}
+\usepackage{ifthen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 0 -> Version orange
+% 1 -> Version noir et blanc
+% 2 -> Version verte et bleu
+% 3 -> Version violette
+% 5 -> Version polyFlag
+% 6 -> Version rainbow
+\newcommand{\valColour}{0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Compilation
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \usepackage{fontspec}
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+	\usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Colours if you want to
+\newcommand{\switchColour}[1]
+{
+  \ifthenelse{\equal{#1}{0}}{%ORANGE
+    \definecolor{HeaderColor}{HTML}{FFB100}
+    \definecolor{ColumnColor}{HTML}{F8E873}
+    \definecolor{NameColour}{HTML}{8A0808}
+    \definecolor{TaglineColour}{HTML}{000000}
+    \definecolor{HeadingColour}{HTML}{DF7401}
+    \definecolor{HeadingRuleColour}{HTML}{DF7401}
+    \definecolor{SubheadingColour}{HTML}{B40404}
+    \definecolor{AccentColour}{HTML}{B40404}
+    \definecolor{EmphasisColour}{HTML}{B40404}
+    \definecolor{BodyColour}{HTML}{61210B}}{}
+  \ifthenelse{\equal{#1}{1}}{%NOIR
+    \definecolor{HeaderColor}{HTML}{919191}
+    \definecolor{ColumnColor}{HTML}{D1D1D1}
+    \definecolor{NameColour}{HTML}{000000}
+    \definecolor{TaglineColour}{HTML}{000000}
+    \definecolor{HeadingColour}{HTML}{000000}
+    \definecolor{HeadingRuleColour}{HTML}{000000}
+    \definecolor{SubheadingColour}{HTML}{000000}
+    \definecolor{AccentColour}{HTML}{000000}
+    \definecolor{EmphasisColour}{HTML}{000000}
+    \definecolor{BodyColour}{HTML}{000000}}{}
+  \ifthenelse{\equal{#1}{2}}{%VERTE
+    \definecolor{HeaderColor}{HTML}{79DA7B}
+    \definecolor{ColumnColor}{HTML}{34CCB3}
+    \definecolor{NameColour}{HTML}{004D2E}
+    \definecolor{TaglineColour}{HTML}{00663D}
+    \definecolor{HeadingColour}{HTML}{00663D}
+    \definecolor{HeadingRuleColour}{HTML}{00663D}
+    \definecolor{SubheadingColour}{HTML}{00663D}
+    \definecolor{AccentColour}{HTML}{00663D}
+    \definecolor{EmphasisColour}{HTML}{00331E}
+    \definecolor{BodyColour}{HTML}{001a0F}}{}
+  \ifthenelse{\equal{#1}{3}}{%VIOLETTE
+    \definecolor{HeaderColor}{HTML}{FFCCD8}
+    \definecolor{ColumnColor}{HTML}{ECC2FF}
+    \definecolor{NameColour}{HTML}{4D004D}%15
+    \definecolor{TaglineColour}{HTML}{660066}%20
+    \definecolor{HeadingColour}{HTML}{660066}
+    \definecolor{HeadingRuleColour}{HTML}{660066}
+    \definecolor{SubheadingColour}{HTML}{660066}
+    \definecolor{AccentColour}{HTML}{660066}
+    \definecolor{EmphasisColour}{HTML}{1a001a}%5
+    \definecolor{BodyColour}{HTML}{330033}}{}%10
+  \ifthenelse{\equal{#1}{4}}{%
+    \definecolor{HeaderColor}{HTML}{357F2D}
+    \definecolor{ColumnColor}{HTML}{B8E4B3}
+    \definecolor{NameColour}{HTML}{000000}
+    \definecolor{TaglineColour}{HTML}{000000}
+    \definecolor{HeadingColour}{HTML}{000000}
+    \definecolor{HeadingRuleColour}{HTML}{000000}
+    \definecolor{SubheadingColour}{HTML}{000000}
+    \definecolor{AccentColour}{HTML}{000000}
+    \definecolor{EmphasisColour}{HTML}{000000}
+    \definecolor{BodyColour}{HTML}{000000}}{}
+  \ifthenelse{\equal{#1}{5}}{%POLYFLAG
+    \definecolor{HeaderColor}{HTML}{357F2D}
+    \definecolor{ColumnColor}{HTML}{B8E4B3}
+    \definecolor{NameColour}{HTML}{DF0101}
+    \definecolor{TaglineColour}{HTML}{FF0040}
+    \definecolor{HeadingColour}{HTML}{0B0B61}
+    \definecolor{HeadingRuleColour}{HTML}{610B4B}
+    \definecolor{SubheadingColour}{HTML}{0B0B61}
+    \definecolor{AccentColour}{HTML}{0000FF}
+    \definecolor{EmphasisColour}{HTML}{0B0B61}
+    \definecolor{BodyColour}{HTML}{0B2161}}{}
+  \ifthenelse{\equal{#1}{6}}{%RAINBOW
+    \definecolor{HeaderColor}{HTML}{357F2D}
+    \definecolor{ColumnColor}{HTML}{B8E4B3}
+    \definecolor{NameColour}{HTML}{000000}
+    \definecolor{TaglineColour}{HTML}{000000}
+    \definecolor{HeadingColour}{HTML}{000000}
+    \definecolor{HeadingRuleColour}{HTML}{000000}
+    \definecolor{SubheadingColour}{HTML}{000000}
+    \definecolor{AccentColour}{HTML}{000000}
+    \definecolor{EmphasisColour}{HTML}{000000}
+    \definecolor{BodyColour}{HTML}{000000}}{}
+}
+\switchColour{\valColour}
+
+\colorlet{name}{NameColour}
+\colorlet{tagline}{TaglineColour}
+\colorlet{heading}{HeadingColour}
+\colorlet{headingrule}{HeadingRuleColour}
+\colorlet{subheading}{SubheadingColour}
+\colorlet{accent}{AccentColour}
+\colorlet{emphasis}{EmphasisColour}
+\colorlet{body}{BodyColour}
+
+% Fonts
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+
+% Bullets for itemize and rating marker
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+\newcommand{\headerbg}[1]{
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[HeaderColor] (current page.north west) rectangle ++(\paperwidth,-#1);
+    \end{tikzpicture}
+}
+
+\newcommand{\rightcolumnbg}[1]{
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[ColumnColor] (current page.north east) rectangle ++(-#1\paperwidth-0.05cm,-\paperheight);
+    \end{tikzpicture}
+}
+
+\newcommand{\leftcolumnbg}[1]{
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[ColumnColor] (current page.north west) rectangle ++(#1\paperwidth+0.05cm,-\paperheight);
+    \end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\name{Prunelle Daudré--Treuil}
+\tagline{CHANGE IT\hskip 7.5cm 26 ans} %/!\ À CHANGER
+\photoR{2.8cm}{picme}
+
+\personalinfo{
+  \email{prunelle.daudretreuil@protonmail.com}
+  \phone{+33(0)7 81 80 11 77}
+  \mailaddress{7 Rue de l'Armée Patton, Appartement 8, 54000 Nancy}
+  \location{Nancy, FRANCE}
+  \github{ptreuil}
+  \linkedin{ptreuil/}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\rightcolumnbg{0.4} % les commandes sont toujours à mettre dans ce sens ! les params de columnbg + paracol doivent donner 1
+%\headerbg{4.95cm}
+
+\makecvheader
+
+\columnratio{0.6}
+
+\begin{paracol}{2}
+
+\cvsection{Formations}
+
+\cvevent{Master TAL-NLP à l'IDMC (en anglais)}{Université de Lorraine}{2022--2024}{Nancy (54), FRANCE}
+
+\divider
+
+\cvevent{Licence MIASHS, Sciences Cognitives}{Université de Lille}{2019 -- 2022}{Villeneuve d'Ascq (59), FRANCE}
+
+\divider
+
+\cvevent{Formation d'ingénieur - Spécialité informatique}{Université de Technologie de Belfort-Montbéliard}{2014 -- 2018}{Belfort (90), FRANCE}
+
+\cvsection{Expériences professionnelles et bénévolat}
+
+\cvevent{Stage de fin d'étude}{LORIA}{11 mars 2024-31 août 2024}{Vandoeuvre-lès-Nancy (54), FRANCE}
+
+\divider
+
+\cvevent{Stage d'observation}{Université de Lille}{10 mai 2021 -- 18 juin 2021}{Tourcoing (59), FRANCE}
+Au sein du laboratoire SCALAB auprès de Mme.Delevoye, professeur en psychologie cognitive
+
+\divider
+
+\cvevent{Standardiste}{DELAVAN}{01 juil 2020 -- 31 juil 2020}{Villeneuve-D'Ascq (59), FRANCE}
+
+\divider
+
+\cvevent{Service Civique}{Unis-cité}{15 oct 2018 -- 13 juin 2019}{Belfort (90), FRANCE}
+\begin{itemize}
+\item Missions Cinéma et Citoyenneté : animation de ciné-débats
+\item Jeunes Citoyens du Numérique : initiation à l'informatique
+\end{itemize}
+
+%\divider
+
+%\cvevent{Stage assistant ingénieur informatique}{Amia Systems}{05 fev 2018 -- 22 juin 2018}{Bruxelles, BELGIQUE}
+
+\divider
+
+\cvevent{Bénévolat}{Librairie Oxfam}{Août 2017}{Paris (75), FRANCE}
+
+%\cvsection{Centres d'intérêt}
+
+%\wheelchart{1.5cm}{0.5cm}{
+%  4/7em/accent!40/{Mathématiques, Informatique Théorique},
+%  4/7em/accent!60/{Communication Orale},
+%  4/7em/accent!80/{Cinéma},
+%  4/7em/accent!100/{Littérature},
+%  4/7em/accent!120/{Sciences\\ Cognitives},
+%  4/7em/accent!140/{Aéronautique, Dirigeable},
+%  4/7em/accent!160/{Voyages}
+%}
+
+\switchcolumn
+
+\cvsection{Diplômes}
+
+\cvachievement{\faUniversity}{Licence MIASHS}{Parcours Sciences Cognitives}
+
+\divider
+
+\cvachievement{\faUniversity}{Baccalauréat}{Série scientifique, spécialité informatique et sciences du numérique, mention bien}
+
+\divider
+
+\cvachievement{\faUniversity}{TOIEC (2022)}{CEFR Level : C1, Score : 975}
+
+%\vspace{0.5cm}
+
+\cvsection{Langues}
+
+\cvskill{Français}{5}
+
+\divider
+
+\cvskill{Anglais}{4}
+
+%\vspace{0.5cm}
+
+\cvsection{Compétences}
+
+\cvtag{\LaTeX}
+\cvtag{Python}
+\cvtag{RDFS/OWL}
+\cvtag{Numpy}
+\cvtag{Panda}
+\cvtag{Matplotlib}
+\cvtag{SKLearn}
+\cvtag{FastText}
+\cvtag{Spacy}
+\cvtag{NLTK}
+\cvtag{Stanza}
+\cvtag{Pytorch}\\
+\cvtag{Networkx}
+
+
+\cvsection{Projets}
+
+\cvprojecthub{Conversational Recommender System}{}{Archives Henri Poincaré}{Printemps 2024}{Description}
+
+\divider
+
+\cvprojecthub{Raisonnement à partir de cas (CBR) par analogie}{}{Université de Lorraine}{2023}{Analyse des résultats d'un algorithme de CBR utilisant l'apprentissage par analogie}
+
+\divider
+
+\cvprojecthub{Analyse des variations sur les manuscrits Ben-Sira}{}{Université de Lorraine}{2022-2023}{Analyse des différences de transcription entre deux manuscrits de la Bible en ancien hébreu}
+
+%\divider
+
+%\cvprojecthub{Extraction d'information depuis des articles scientifiques}{}{Université de Lorraine}{Automne 2022}{}
+
+%\divider
+
+%\cvprojecthub{Analyse de biais de genre dans les plongements lexicaux pour le TALN}{}{Université de Lille}{2021-2022}{Travail effectué auprès de Mme.Keller chercheuse à INRIA-Lille}
+
+%\divider
+
+%\cvprojectlab{Gestionnaire de bibliothèque}{}{Projet personnel}{Depuis 2020}{Création d'un programme python pour la gestion du catalogue et des prêts de ma bibliothèque personnelle}
+
+%\divider
+
+%\cvprojectlab{Classificateur bayésien et algorithme KNN}{https://gitlab.com/e-girls-who-code/comment_classifier}{Université de Lille}{2020}{Réalisation d'algorithmes de \emph{Machine Learning}}
+
+%\divider
+
+%\cvprojecthub{Projet c++ - \emph{Jeu de pogo et IA}}{https://github.com/MariLaTaupe/IA41}{UTBM}{2017}{}
+
+%\divider
+
+%\cvprojecthub{Application Java - \emph{Jeu de go}}{https://github.com/MariLaTaupe/AWaltzOfSnowAndFire}{UTBM}{2016}{}
+
+\end{paracol}
+
+\end{document}
