@@ -1,4 +1,10 @@
-# AltaCV, yet another LaTeX CV/Résumé class
+# CV template by ptreuil, using the AltaCV class 2020 (see [here](alta))
+
+Last modified : 08/04/2024
+
+See in Overleaf : [link](https://www.overleaf.com/read/dpdmjxxrjgcj#262367)
+
+# <a href="alta">AltaCV, yet another LaTeX CV/Résumé class<a>
 
 v1.2 (11 February 2020), by LianTze Lim (liantze@gmail.com)
 
