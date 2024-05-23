@@ -1,3 +1,10 @@
 *.pdf
 *.log
 *.gz
+*.aux
+*.bbl
+*.bcf
+*.fdb_latexmk
+*.fls
+*.out
+*.xml
